@@ -5,8 +5,9 @@ import truncateMiddle from "truncate-middle"
 
 
 const Container = styled('div', {
+    boxSizing:"border-box",
     display: "grid",
-    gridTemplateColumns: "repeat(auto-fill, minmax(300px, 1fr))",
+    gridTemplateColumns: "repeat(auto-fill, minmax(220px, 1fr))",
     gridTemplateRows: "1fr 1fr",
     gridAutoFlow: "column",
     alignContent:"end",
@@ -38,13 +39,13 @@ const truncate = (text) => {
 
 export function Transaction({ data }) {
     return <Container>
-        <div>Tx: <Link href='/'>{truncate(data?.hash)}</Link></div>
+        <div>Tx: <Link href={`/transaction/${data?.hash}`}>{truncate(data?.hash)}</Link></div>
         <div>
             <span style={{ fontSize: "small", color: violet.violet12 }}>{new Date(data?.timestamp).toLocaleString()}</span>
         </div>
 
-        <div>From: <Link href='/'>{truncate(data?.fromAddress)}</Link></div>
-        <div>To: <Link href='/'>{truncate(data?.toAddress)}</Link></div>
+        <div>From: <Link href={`/address/${data.fromAddress}`}>{truncate(data?.fromAddress)}</Link></div>
+        <div>To: <Link  href={`/address/${data.toAddress}`}>{truncate(data?.toAddress)}</Link></div>
 
         <div style={{ fontSize: "small", whiteSpace: "nowrap" }}>
             Amount: <span style={{ fontSize: "small", color: violet.violet11 }}> {data?.amount}</span>

@@ -1,13 +1,14 @@
 import { gray, violet } from "@radix-ui/colors";
 import { Box } from "components/atoms/Box";
 import WithNav from "layouts/WithNav";
+import Link from "next/link";
 import { useRouter } from "next/router";
 import { useGetBlockById } from "services/swr/useGetBlockById";
 import { useGetBlockchain } from "services/swr/useGetBlocks";
 import { styled } from "stitches.config";
 // import { truncate } from "utils";
 import truncate from "truncate";
-const Span = styled('div', {
+const GridItem = styled('div', {
     fontSize:"normal",
     display:"block",
     whiteSpace:"normal",
@@ -52,26 +53,31 @@ export default function BlockID(){
         }}>
           
 
-            <Span variant={'title'}>Block number</Span>
-            <Span>{data?.number}</Span>
+            <GridItem variant={'title'}>Block number</GridItem>
+            <GridItem>{data?.number}</GridItem>
 
-            <Span variant={'title'}>Timestamp</Span>
-            <Span>{new Date(data?.timestamp).toLocaleString()}</Span>
+            <GridItem variant={'title'}>Timestamp</GridItem>
+            <GridItem>{new Date(data?.timestamp).toLocaleString()}</GridItem>
 
-            <Span variant={'title'}>Mine by</Span>
-            <Span>{data?.miningData?.toAddress}</Span>
+            <GridItem variant={'title'}>Mine by</GridItem>
+            <GridItem>{data?.miningData?.toAddress}</GridItem>
 
-            <Span variant={'title'}>Reward </Span>
-            <Span>{data?.miningData?.amount} Eri</Span>
+            <GridItem variant={'title'}>Reward </GridItem>
+            <GridItem>{data?.miningData?.amount} Eri</GridItem>
 
-            <Span variant={'title'}>Hash</Span>
-            <Span>{data?.hash}</Span>
+            <GridItem variant={'title'}>Hash</GridItem>
+            <GridItem>{data?.hash}</GridItem>
 
-            <Span variant={'title'}>Parent hash</Span>
-            <Span>{data?.previousHash}</Span>
+            <GridItem variant={'title'}>Parent hash</GridItem>
+            <GridItem>{data?.previousHash}</GridItem>
 
-            <Span variant={'title'}>Transactions</Span>
-            <Span>{data?.transactions?.length} transactions</Span>
+            <GridItem variant={'title'}>Transactions</GridItem>
+            <GridItem >
+                <Box css={{background:violet.violet4, display:'inline-block', padding:'5px 10px', borderRadius:'0.5rem', color:violet.violet10}}>
+                    <Link href={`/transaction?bx=${data?.number}`}>
+                        {`${data?.transactions?.length} transactions`}
+                </Link>
+                    </Box></GridItem>
         </Box>
 
         

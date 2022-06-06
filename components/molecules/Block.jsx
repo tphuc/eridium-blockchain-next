@@ -27,10 +27,10 @@ const truncate = (text) => {
 
 export function Block({ data }) {
     return <Container>
-        <div>Bx: <Link href='/'>{data.number?.toString()}</Link></div>
+        <div>Bx: <Link href={`/block/${data?.number}`}>{data?.number?.toString()}</Link></div>
         <div>Miner: <Link href='/'>{truncate(data?.miningData?.toAddress)}</Link></div>
         <div>
-            <span style={{ fontSize: "small", color: violet.violet12 }}>{new Date(data.timestamp).toLocaleString()}</span>
+            <span style={{ fontSize: "small", color: violet.violet12 }}>{new Date(data?.timestamp).toLocaleString()}</span>
         </div>
         <div style={{fontSize:"small"}}>
             Reward: <span style={{ fontSize: "small", color: violet.violet11 }}>{data?.miningData?.amount}</span>
