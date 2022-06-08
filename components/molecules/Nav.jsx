@@ -32,5 +32,11 @@ export default function Nav(){
             Create Wallet
             </StyledLink>
         </Link>
+
+        <Link href='/post-transaction'>
+        <StyledLink>
+            New transaction
+            </StyledLink>
+        </Link>
     </NavContainer>
 }
