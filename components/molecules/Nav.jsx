@@ -38,5 +38,11 @@ export default function Nav(){
             New transaction
             </StyledLink>
         </Link>
+
+        <Link href='/mine'>
+        <StyledLink>
+            Mine
+            </StyledLink>
+        </Link>
     </NavContainer>
 }
